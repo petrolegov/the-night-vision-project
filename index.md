@@ -36,7 +36,6 @@ The decision "IR cut filter on/off" is usually depending on a comparator circuit
 
 <p align="center">
     <img width="300" height="200" src="https://user-images.githubusercontent.com/101147656/158277406-b5c0aac5-0a20-4165-96b5-584a56d373bb.jpeg">
-  <img width="300" height="200" src="https://user-images.githubusercontent.com/101147656/158277406-b5c0aac5-0a20-4165-96b5-584a56d373bb.jpeg">
 </p>
 
 If you now replace the photoresistor with a high resistor value (R=1MΩ for example, see image above), it will seem to the comparator circuit like the photoresistor is always in the dark. Then the IR cut filter will always be off, and you will always have a "night vision" display. You can look at it when you need it and ignore it when you are in the light, but **you will hear no clicking, so you are less noisy**...also works with putting a tape over the photoresistor ;)
@@ -49,43 +48,21 @@ If you want, you can also make the IR cut filter switchable via software. You ne
 
 The simplest (but also least flexible) way to build a night vision system is based on a PC (workstation) or laptop. Because you have a power supply and a computing gadget, you will only need a camera that supports night vision.
 
+TBD
+
 
 
 ## A More Flexible Night Vision System Based on RaspberryPi
+TBD
+
+
+
 ## An Autonomously Usable Night Vision System for Mobile Usage
+TBD
+
+
+
 ## Multiple Night Vision Systems Accessible Via Website
+TBD
 
 
-
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and [Image](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.QRZLgHcvdNmUjcjNq5newwHaHa%26pid%3DApi&f=1)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/petrolegov/the-night-vision-project/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
