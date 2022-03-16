@@ -7,8 +7,7 @@ It is more a collection of tutorials how to build such a system. Necessary code 
 Different tutorials targeting a variety of night vision systems will be uploaded continuously to serve as a starting point for development and adaptation of own night vision systems.
 
 <p align="center">
-    <img width="400" height="2![image](https://user-images.githubusercontent.com/101147656/158518197-7d1f398b-3112-4cc8-b1a3-deb6e334fd1b.png)
-00" src="https://user-images.githubusercontent.com/101147656/158518128-3e4f1b5f-dfe8-4bd0-a3cb-4391cc80965c.png">
+    <img width="400" height="200" src="https://user-images.githubusercontent.com/101147656/158529013-6f5bc1c1-0b35-4f34-a17e-666b50693e66.png">
 </p>
 
 
