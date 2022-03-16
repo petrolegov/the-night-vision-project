@@ -123,7 +123,8 @@ If you prefer running the Pytrhon scripts directly or have a restricted / unstab
 #### 2.3.2 - Running Software as Python Scripts Directly
 **Prerequisites:**
   * Python 3 (best: Python 3.7) is installed on your PC / laptop
-*  pip package manager for Python is installed (conda is also okay, whatever you are familiar with)
+  * pip package manager for Python is installed (conda is also okay, whatever you are familiar with)
+  * Python script and package requirements, can be downloaded from: [https://github.com/petrolegov/the-night-vision-project](https://github.com/petrolegov/the-night-vision-project)
 
 First install all the required Python modules. If you already installed the modules, they will be skipped or updated.
 ``` shell
