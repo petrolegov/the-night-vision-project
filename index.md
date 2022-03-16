@@ -15,6 +15,8 @@ Different tutorials targeting a variety of night vision systems will be uploaded
 3. [A More Flexible Night Vision System Based on RaspberryPi](#a-more-flexible-night-vision-system-based-on-raspberrypi)
 4. [An Autonomously Usable Night Vision System for Mobile Usage](#an-autonomously-usable-night-vision-system-for-mobile-usage)
 5. [Multiple Night Vision Systems Accessible Via Website](#multiple-night-vision-systems-accessible-via-website)
+6. [Safety Instructions](#safety-instructions)
+7. [Ordering and Delivery Hints](#ordering-and-delivery-hints)
 
 
 
@@ -43,12 +45,23 @@ If you now replace the photoresistor with a high resistor value (R=1MΩ for exam
 If you want, you can also make the IR cut filter switchable via software. You need to use the GPIOs of a RaspberryPi in this case (when you use a RaspberryPi as computing gadget).
 
 
+<br/>
+
+**PLEASE ALWAYS CONSIDER THE [SAFETY INSTRUCTIONS](#safety-instructions) FOR INFRARED LIGTH, VISIBILITY BY OTHERS, SIGNIFICANT HEAT DEVELOPMENT AND ORDERING ISSUES!**
+
+<br/>
+
 
 ## A Stationary Night Vision System Based on PC or Laptop
 
-The simplest (but also least flexible) way to build a night vision system is based on a PC (workstation) or laptop. Because you have a power supply and a computing gadget, you will only need a camera that supports night vision.
+The simplest (but also least flexible) way to build a night vision system is based on a PC (workstation) or laptop. Because you already have a power supply and a computing gadget, you will only need a camera that supports night vision (for example a cheap camera with switchable IR cut filter, see the two images below).
 
-TBD
+<p align="center">
+    <img width="300" height="300" src="https://user-images.githubusercontent.com/101147656/158514531-b2ebbc28-085f-40c5-bb1c-c21e659364b9.png">
+    <img width="300" height="300" src="https://user-images.githubusercontent.com/101147656/158514647-66dade3b-909b-49e4-8694-f2e5add9bd35.png">
+</p>
+
+
 
 
 
@@ -65,4 +78,31 @@ TBD
 ## Multiple Night Vision Systems Accessible Via Website
 TBD
 
+
+
+## Safety Instructions
+
+**Infrared Light:**<br/>
+Infrared Radiation might harm your eyesight when continuously exposed. Nothing will happen immediately, but you should avoid staring into the infrared light to avoid long-term damage. Also do not point it directly to an animal or a friendly person nearby. It will not have a meaningful negative immediate effect on hostile animals or persons nearby, so infrared light cannot be used to chase an animal or person away or blind the subject temporarily.
+
+**Visibility / Hearability:**<br/>
+As you can see, the infrared light is not completely invisible. You will see red circles in the infrared LEDs. If you point the DIY night-vision gadget outside your window or your shelter, the observed animal or person can maybe see it and identify you as a target. So use carefully (safe distance to device, only look shortly or change positions regularly). You should try not to cover the infrared LEDs, because then night-vision will not work well and the cover material is exposed to heating, which can potentially result in a fire.
+
+Also the camera aperture will make some clicking noise, which might be heard by hostile persons nearby.
+
+**Heat:**<br/>
+Infrared radiation develops heat, more than you think. Watch out when touching the infrared LEDs (or the PCB backplate behind them), they can become very hot. Also, do not cover the infrared LEDs with tape, textiles, clothes, … or put it on carpets etc. The materials with contact to the infrared LEDs can start to burn. Same goes for the backplate of the PCB, behind the infrared LEDs. It gets hot!
+
+**Confidentiality, Semiconductor Market and Supply Chain:**<br/>
+Currently (2021/2022/2023), semiconductor market is under tension with supply chain issues leading to a shortage in semiconductors, processors, ICs, etc. Many products are off the market until late 2022 or even 2023. Not all components might be available at all times, starting with the standard RaspberryPi (v3 or v4). Wherever possible, alternatives will be presented to overcome these organisational obstacles.
+
+If you find other alternatives for any component that are not mentioned here, do not hesitate to make contact, they will be added to the site if appropriate.
+
+
+
+## Ordering and Delivery Hints
+When ordering, **always keep the delivery date in mind**! It is no good ordering from Banggood, Amazon (China) or similar, if the goods will be delivered in 1-2 months. Infrared camera modules are available within a couple of days typically!  
+If it is currently not possible to ship to (your city in) Ukraine, contact persons from Poland, Romania, Slovakia or Hungary living close at the borders, or add the items to the lists when requesting help from other countries. They can maybe order it for you and hand it over at a border. Poland usually allows fast delivery from other European countries. Germany usually also has a short delivery time. Useful contacts for requesting delivery from other countries might be found on:	https://fightforua.org/  
+If necessary, you can also contact foreign groups or individuals coming to your country or supplying goods to Ukraine. Maybe they can also provide you the materials for the DIY night vision project.  
+When ordering: Maybe the express option makes sense for you, so that the components arrive some days earlier.
 
