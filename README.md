@@ -20,6 +20,7 @@ Different tutorials targeting a variety of night vision systems will be uploaded
 5. [Multiple Night Vision Nodes Accessible Via Website](#multiple-night-vision-nodes-accessible-via-website)
 6. [Safety Instructions](#safety-instructions)
 7. [Ordering and Delivery Hints](#ordering-and-delivery-hints)
+8. [Useful RaspberryPi Links](#useful-raspberrypi-links)
 
 
 
@@ -40,7 +41,7 @@ When the IR cut filter is switched on or off, you usually hear a clicking noise.
 The decision "IR cut filter on/off" is usually depending on a comparator circuit using a photoresistor (see image above, red circles). Photoresistors are more conductive when illuminated, so they have a high resistance in darkness and a low resistance in light. The comparator circuit detects when the resistance of the photoresistor rises above the (fixed) value of another (standard) resistor, resulting in a signal to turn the IR cut filter off in darkness or low light. Vice versa, the IR cut filter is switched on when the resistance of the photoresistor drops below the other resistor value again in a bright surrounding.
 
 <p align="center">
-    <img width="300" height="200" src="https://user-images.githubusercontent.com/101147656/158277406-b5c0aac5-0a20-4165-96b5-584a56d373bb.jpeg">
+    <img width="150" height="100" src="https://user-images.githubusercontent.com/101147656/158277406-b5c0aac5-0a20-4165-96b5-584a56d373bb.jpeg">
 </p>
 
 If you now replace the photoresistor with a high resistor value (R=1MΩ for example, see image above), it will seem to the comparator circuit like the photoresistor is always in the dark. Then the IR cut filter will always be off, and you will always have a "night vision" display. You can look at it when you need it and ignore it when you are in the light, but **you will hear no clicking, so you are less noisy**...also works with putting a tape over the photoresistor ;)
@@ -61,11 +62,10 @@ If you want, you can also make the IR cut filter switchable via software. You ne
 **Budget:   $35**
 
 
-The simplest and cheapest (but also least flexible) way to build a night vision system is based on a PC (workstation) or laptop. Because you already have a power supply and a computing gadget, you will only need a camera that supports night vision (for example a cheap camera with switchable IR cut filter, see the two images below).
+The simplest and cheapest (but also least flexible) way to build a night vision system is based on a PC (workstation) or laptop. Because you already have a power supply and a computing gadget, you will only need a camera that supports night vision (for example a cheap camera with switchable IR cut filter, see image below).
 
 <p align="center">
     <img width="300" height="300" src="https://user-images.githubusercontent.com/101147656/158514531-b2ebbc28-085f-40c5-bb1c-c21e659364b9.png">
-    <img width="300" height="300" src="https://user-images.githubusercontent.com/101147656/158514647-66dade3b-909b-49e4-8694-f2e5add9bd35.png">
 </p>
 
 
@@ -177,7 +177,98 @@ Becausea it is a USB connection, you can connect multiple cameras at once (looki
 
 **Budget:   $50...$60**
 
-TBD
+
+A big advantage of using a RaspberryPi instead of a workstation PC or laptop is that you have more options for the night vision camera. Additional to USB cameras that can be used with PC or laptop, RaspberryPi allows you to use MIPI CSI cameras as the ones shown below (left: ribbon cable for standard RaspberryPi, right: ribbon cable for smaller interface of RaspberryPi Zero):
+
+<p align="center">
+   <img width="300" height="300" src="https://user-images.githubusercontent.com/101147656/158514647-66dade3b-909b-49e4-8694-f2e5add9bd35.png">   
+</p>
+
+You are also more flexible when you want to mount your night vision system, because it does not have to be close to your workstation. You can also install the RaspberryPi night vision system close to your surrounding and observe the data via video stream by use of the WiFi function (look under [Useful RaspberryPi Links](#useful-raspberrypi-links) for a how-to).
+
+
+### 3.1 - Required Components
+The components you need depend on which device you use. It is different between RaspberryPi 1/2/3/4 and RaspberryPi Zero.
+
+### 3.1.1 - Basic Equipment
+You need following things:
+
+**Power supply with USB connector:**
+This can be a USB power plug (left) if you have a power supply around. It can also be a powerbank (middle) or a solar battery pack (right) with USB plug for mobile use or if you do not have a power supply around.
+
+<p align="center">
+    <img width="200" height="200" src="https://user-images.githubusercontent.com/101147656/158885813-4d351a6c-24a8-4353-b639-5a9d38306729.png">
+    <img width="200" height="200" src="https://user-images.githubusercontent.com/101147656/158885667-bfd83447-93cf-430d-8ff5-89281a7ec00f.png">
+    <img width="200" height="200" src="https://user-images.githubusercontent.com/101147656/158885935-c4d09568-bee6-452c-b3a6-ef390d2ed99a.png">
+</p>
+
+
+**RaspberryPi 1/2/3/4 (left) or RaspberryPi Zero (right):**
+RaspberryPi are sold out anywhere, so either you already have one or you can also use a BananaPi, OrangePi or other RaspberryPi derivatives. As long as they have USB ports or MIPI CSI ports for your night vision camera and a (Micro)HDMI or another MIPI CSI port for your large HDMI monitor or your small TFT monitor. For this reason, you **cannot use a RaspberryPi Pico**, it has no connector for screen.
+<p align="center">
+   <img width="300" height="200" src="https://user-images.githubusercontent.com/101147656/158883627-363ebe46-b3e6-4ce0-872e-158d4fc3445f.png">
+   <img width="300" height="200" src="https://user-images.githubusercontent.com/101147656/158886124-78176f1c-0465-49cd-885c-21412ef1ddcd.png">
+</p>
+
+Currently compatible & available RaspberryPi or alternatives with MIPI CSI & HDMI (as of March 17th 2022, will be updated regularly):
+  * **OrangePi**: https://orangepi.com/index.php?route=product/product&product_id=864
+  * **OrangePi Lite**: https://orangepi.com/index.php?route=product/product&product_id=867
+  * **OrangePi PC Plus**: https://orangepi.com/index.php?route=product/product&product_id=866
+  * **OrangePi One OP0100**: https://orangepi.com/index.php?route=product/product&product_id=852
+
+
+**USB night vision camera (left) or MIPI CSI night vision camera (right):**
+<p align="center">
+    <img width="300" height="300" src="https://user-images.githubusercontent.com/101147656/158514531-b2ebbc28-085f-40c5-bb1c-c21e659364b9.png">
+    <img width="300" height="300" src="https://user-images.githubusercontent.com/101147656/158514647-66dade3b-909b-49e4-8694-f2e5add9bd35.png">
+</p>
+
+
+**MicroUSB cable:**
+<p align="center">
+   <img width="200" height="200" src="https://user-images.githubusercontent.com/101147656/158884964-e998b5a5-2105-4a25-9dfb-e5ec3042e121.png">
+</p>
+
+
+**MicroSD card + SD card adapter:**
+<p align="center">
+   <img width="200" height="200" src="https://user-images.githubusercontent.com/101147656/158883405-b925e241-46d4-47e7-b1c6-bf7b07baf2e1.png">
+</p>
+
+
+**SD card reader (if your laptop/PC workstation can not already do this):**
+<p align="center">
+   <img width="200" height="200" src="https://user-images.githubusercontent.com/101147656/158882860-4fc98781-0622-4c70-9b11-31e602b9b749.png">
+</p>
+
+
+### 3.1.2 - Additional Equipment for RaspberryPi4
+If using a HDMI monitor, you will also need a MicroHDMI to HDMI adapter. RaspberryPi4 has no large HDMI connectors, it has only MicroHDMI connectors. If you use a small TFT monitor with ribbon cable and MIPI CSI connector you do not need this.
+
+**MicroHDMI to HDMI adapter:**
+<p align="center">
+   <img width="200" height="200" src="https://user-images.githubusercontent.com/101147656/158884164-add6b11b-5aa0-4107-a479-eb93ab91aee1.png">
+</p>
+
+
+
+### 3.1.3 - Additional Equipment for RaspberryPi Zero
+
+**FFC Flex Cable Adapter for RaspberryPi Zero (from large connector at camera to small connector at RaspberryPi Zero):**
+<p align="center">
+   <img width="200" height="200" src="https://user-images.githubusercontent.com/101147656/158893551-ca2fff00-51a5-4a46-abc7-ce69f9eb9134.png">
+</p>
+
+**MicroHDMI to HDMI adapter:**
+<p align="center">
+   <img width="200" height="200" src="https://user-images.githubusercontent.com/101147656/158884164-add6b11b-5aa0-4107-a479-eb93ab91aee1.png">
+</p>
+
+
+
+### 3.2 - Setting up your RaspberryPi
+If you know how to do this or it is already set up, you can skip this step. For RaspberryPi derivatives (for example OrangePi) things will work differently.
+  * Setup Guide for OrangePi: https://www.instructables.com/Orange-Pi-One-Setup-Guide/
 
 
 ## 4 - An Autonomously Usable Night Vision System for Mobile Usage
@@ -222,3 +313,11 @@ If necessary, you can also contact foreign groups or individuals coming to your 
 
 When ordering: Maybe the express option makes sense for you, so that the components arrive some days earlier.
 
+
+
+## 8 - Useful RaspberryPi Links
+**Installer for RaspberryPi OS (Raspbian):** https://www.raspberrypi.com/software/
+
+**How to setup WiFi on RaspberryPi 3/4/400/Zero:** https://raspberrytips.com/raspberry-pi-wifi-setup/
+
+**How to enable a camera on RaspberryPi and some basics:** https://raspberrytips.com/install-camera-raspberry-pi/
