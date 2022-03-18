@@ -304,11 +304,9 @@ The Ubuntu installation did not work right away for me (with double-clicking), s
   * everything should be installed now.
 
 You can now open the "Imager" (has a raspberry logo):
+
 <p align="center">
-   <img width="300" height="300" src="https://user-images.githubusercontent.com/101147656/158901203-9ad08e7f-12f5-4851-ac7f-4e5a5ef4802b.png">
-</p>
-<p align="center">
-   <img width="300" height="300" src="https://user-images.githubusercontent.com/101147656/158901203-9ad08e7f-12f5-4851-ac7f-4e5a5ef4802b.png">
+   <img width="500" height="300" src="https://user-images.githubusercontent.com/101147656/158901203-9ad08e7f-12f5-4851-ac7f-4e5a5ef4802b.png">
 </p>
 
 Following steps are required:
@@ -325,8 +323,37 @@ After it has finished, put the MicroSD card into the RaspberryPi, RaspberryPi Ze
 #### 3.2.2 - System Configuration
 On first startup, you need to configure your region, password and so on.
 
-**Be careful to plug in keyboard, mouse and display from the beginning, the RaspberryPi will only load drivers for the periphery it sees at startup. So when you start your RaspberryPi and plug in mouse or keyboard later, it might happen that it is not working!**
+**Be careful to plug in keyboard, mouse and display from the beginning, the RaspberryPi will only load drivers for the periphery it sees at startup. So when you start your RaspberryPi and plug in mouse or keyboard later, it might happen that it is not working or just after reboot.**
 
+**CAUTION: Once the system has started, the most important thing is that you ENABLE THE CAMERA!**</br>
+Enabling the camera can be dne via terminal, just enter ```sudo raspi-config```, select interface options select "(Legacy) Camera Enable" and enable the camera. After this, a **reboot is required** for the changes to become effective.
+
+Now you have to update your package manager:
+  * ```sudo apt-get update```
+  * ```sudo apt-get upgrade```
+  * ```sudo apt-get install -f```
+ 
+After a **reboot**  you can install the required Python modules  and packages (execute this in folder where ```requirements.txt``` can be found, you can find the file in the Github repository):
+   * ```pip install requirements.txt
+
+There might be some problems with OpenCV (and also between OpenCV and Numpy) on the RaspberryPi (Zero). ```opencv-python==4.3.0.38``` and ```numpy==1.22.3``` worked well for me on a RaspberryPi.
+
+You might also run into OpenCV-specific issues. They should be reduced when using a older versionof OpenCV (in the 4.3.x.x range), otherwise you can find some help on the web
+
+If you have problems setting this up, do not hesitate to contact me!
+
+
+### 3.3 Software
+
+The software is the same as in [A Stationary Night Vision System Based on PC or Laptop](#a-stationary-night-vision-system-based-on-pc-or-laptop) (2.3 and 2.4), but it is good to put the Python script in autostart, so you do not rely on mouse and keyboard everytime when you switch on the RaspberryPi. The script will just start everytime when you turn on the device.
+
+**Executing the night vision Python srcipt in autostart mode:**</br>
+  * On the RaspberryPi (!): access ```/etc/rc.local``` for example with a standard text editor
+  * write into ```rc.local```: ```sudo python3 night_vision_flexible.py &``` and save the ```rc.local``` file
+  * Reboot the RaspberryPi
+  * The video stream should now start automatically after reboot.
+
+More information and other variants on adding a Python script to autostar can be found [here](#https://www.itechfy.com/tech/auto-run-python-program-on-raspberry-pi-startup/).
 
 
 
