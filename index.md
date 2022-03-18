@@ -334,11 +334,11 @@ Now you have to update your package manager:
   * ```sudo apt-get install -f```
  
 After a **reboot**  you can install the required Python modules  and packages (execute this in folder where ```requirements.txt``` can be found, you can find the file in the Github repository):
-   * ```pip install requirements.txt
+```pip install requirements.txt```
 
 There might be some problems with OpenCV (and also between OpenCV and Numpy) on the RaspberryPi (Zero). ```opencv-python==4.3.0.38``` and ```numpy==1.22.3``` worked well for me on a RaspberryPi.
 
-You might also run into OpenCV-specific issues. They should be reduced when using a older versionof OpenCV (in the 4.3.x.x range), otherwise you can find some help on the web
+You might also run into OpenCV-specific issues. They should be reduced when using a older versionof OpenCV (in the 4.3.x.x range), otherwise you can find some help on the web.
 
 If you have problems setting this up, do not hesitate to contact me!
 
