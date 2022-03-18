@@ -2,7 +2,7 @@
 
 This is a DIY project about the topic "night vision", which can be used to observe animals or other sceneries.
 
-It is more a collection of tutorials how to build such a system. Necessary code will be provided, but is just seen as a component to build the night vision system.
+It is more a collection of tutorials how to build such a system. Necessary code will be provided, but is just seen as a component to build the night vision system. Everything will be explained in detail, so any person with some IT knowledge can implement the solution (even if the person has never worked with RaspberryPi, night vision cameras, Linux operating systems or Python before).
 
 Different tutorials targeting a variety of night vision systems will be uploaded continuously to serve as a starting point for development and adaptation of own night vision systems.
 
@@ -263,6 +263,19 @@ The camera connector of the RaspberryPi Zero is smaller than the one on the stan
 </p>
 
 
+**OTG adapter (USB-A female to MicroUSB male, just for setup):**
+<p align="center">
+   <img width="200" height="200" src="https://user-images.githubusercontent.com/101147656/158908917-78f4a900-773e-4415-9db5-b3a911c34a21.png">
+</p>
+
+
+**USB hub (just for setup):**
+The USB hub will be needed to use both mouse and keyboard via a single MicroUSB port, because the other MicroUSB port of the RaspberryPi Zero will be needed for power. The USB hub can be removed once everything is installed and the Python script for the night vision camera has been set to autostart.
+<p align="center">
+   <img width="200" height="200" src="https://user-images.githubusercontent.com/101147656/158908715-fad497fb-25d9-4579-901d-0b716980db1a.png">
+</p>
+
+
 **MicroHDMI to HDMI adapter:**
 If using a HDMI monitor (large or small), you will also need a MicroHDMI to HDMI adapter. RaspberryPi Zero has no large HDMI connectors, it has only MicroHDMI connectors. The RaspberryPi Zero does not have a second MIPI CSI connector, so you really have to have an HDMI adaptor.
 
@@ -279,16 +292,97 @@ If you know how to do this or it is already set up, you can skip this step. For 
 First you have to install your operating system. The standard Raspbian OS is recommended, because most things are already installed. It will sadly not work on the RaspberryPi derivatives (OrangePi etc.), so you have to look up how it works there.
 
 
+#### 3.2.1 - Install Raspberry Imager
+Enter https://www.raspberrypi.com/software/ and download Raspberry Imager for the operating system (OS) you are currently using on your PC. For Windows it will simply be an executable (* .exe), for Ubuntu it will be a * .deb file.
+
+The Ubuntu installation did not work right away for me (with double-clicking), so I will describe some steps I had to take:
+  * download Ubuntu version (* .deb file)
+  * open terminal and enter: ```sudo dpkg –i filename.deb```
+  * some error due missing packages occured
+  * install missing dependencies with: ```sudo apt-get install -f```
+  * enter again: sudo apt-get install -f
+  * everything should be installed now.
+
+You can now open the "Imager" (has a raspberry logo):
+
+<p align="center">
+   <img width="500" height="300" src="https://user-images.githubusercontent.com/101147656/158901203-9ad08e7f-12f5-4851-ac7f-4e5a5ef4802b.png">
+</p>
+
+Following steps are required:
+  * Click "Choose OS" and select "Raspberry Pi OS (32-Bit)"
+  * Then **insert an empty SD card (with adapter) into your current PC**, click "Choose Storage" and select your SD card adapter (can be "Generic mass storage")
+  * Make sure again that the SD card is empty and no important information are on it. It will be formatted and all data will be deleted in the further process!
+  * It is best to configure your password and WiFi connection now via the settings menu (little gear symbol), later it will only get harder. For the WiFi setting you set the SSID to your WiFi network name and enter the password of your WiFi network. WiFi will only be needed during startup when missing Python packages have to be installed, later it is not required anymore.
+  * Click "Write" and approve that the SD card wil be formatted and all data will be overwritten
+  * Now it will take some time (5min burning, 10min verifying) to burn the OS image on the SD card
+
+After it has finished, put the MicroSD card into the RaspberryPi, RaspberryPi Zero or your alternative and start your system.
+
+
+#### 3.2.2 - System Configuration
+On first startup, you need to configure your region, password and so on.
+
+**Be careful to plug in keyboard, mouse and display from the beginning, the RaspberryPi will only load drivers for the periphery it sees at startup. So when you start your RaspberryPi and plug in mouse or keyboard later, it might happen that it is not working or just after reboot.**
+
+**CAUTION: Once the system has started, the most important thing is that you ENABLE THE CAMERA!**</br>
+Enabling the camera can be dne via terminal, just enter ```sudo raspi-config```, select interface options select "(Legacy) Camera Enable" and enable the camera. After this, a **reboot is required** for the changes to become effective.
+
+Now you have to update your package manager:
+  * ```sudo apt-get update```
+  * ```sudo apt-get upgrade```
+  * ```sudo apt-get install -f```
+ 
+After a **reboot**  you can install the required Python modules  and packages (execute this in folder where ```requirements.txt``` can be found, you can find the file in the Github repository):
+   * ```pip install requirements.txt
+
+There might be some problems with OpenCV (and also between OpenCV and Numpy) on the RaspberryPi (Zero). ```opencv-python==4.3.0.38``` and ```numpy==1.22.3``` worked well for me on a RaspberryPi.
+
+You might also run into OpenCV-specific issues. They should be reduced when using a older versionof OpenCV (in the 4.3.x.x range), otherwise you can find some help on the web
+
+If you have problems setting this up, do not hesitate to contact me!
+
+
+### 3.3 Software
+
+The software is the same as in [A Stationary Night Vision System Based on PC or Laptop](#a-stationary-night-vision-system-based-on-pc-or-laptop) (2.3 and 2.4), but it is good to put the Python script in autostart, so you do not rely on mouse and keyboard everytime when you switch on the RaspberryPi. The script will just start everytime when you turn on the device.
+
+**Executing the night vision Python srcipt in autostart mode:**</br>
+  * On the RaspberryPi (!): access ```/etc/rc.local``` for example with a standard text editor
+  * write into ```rc.local```: ```sudo python3 night_vision_flexible.py &``` and save the ```rc.local``` file
+  * Reboot the RaspberryPi
+  * The video stream should now start automatically after reboot.
+
+More information and other variants on adding a Python script to autostar can be found [here](#https://www.itechfy.com/tech/auto-run-python-program-on-raspberry-pi-startup/).
+
+
+
 
 ## 4 - An Autonomously Usable Night Vision System for Mobile Usage
 
 **Budget:   $60...$70**
 
 TBD
+TBD
+TBD
+
+This autonomously usable night vision system will use a battery pack with a solar cell, so the battery can be reloaded during the daylight and no charging is required. This makes the system independent of available power supplies.
+
+TBD
+TBD
+TBD
+
+Tutorial how to set up a TFT display for RaspberryPi:
+https://tutorial.cytron.io/2019/12/25/getting-started-with-3-5-tft-touch-screen-using-raspberry-pi-4/
+
+TBD
+TBD
+TBD
 
 
 
 ## 5 - Multiple Night Vision Nodes Accessible Via Website
+
 TBD
 
 
@@ -298,15 +392,18 @@ TBD
 **Infrared Light:**<br/>
 Infrared Radiation might harm your eyesight when continuously exposed. Nothing will happen immediately, but you should avoid staring into the infrared light to avoid long-term damage. Also do not point it directly to an animal or a friendly person nearby. It will not have a meaningful negative immediate effect on hostile animals or persons nearby, so infrared light cannot be used to chase an animal or person away or blind the subject temporarily.
 
+
 **Visibility / Hearability:**<br/>
 As you can see, the infrared light is not completely invisible. You will see red circles in the infrared LEDs. If you point the DIY night-vision gadget outside your window or your shelter, the observed animal or person can maybe see it and identify you as a target. So use carefully (safe distance to device, only look shortly or change positions regularly). You should try not to cover the infrared LEDs, because then night-vision will not work well and the cover material is exposed to heating, which can potentially result in a fire.
 
 Also the camera aperture will make some clicking noise, which might be heard by hostile persons nearby.
 
+
 **Heat:**<br/>
 Infrared radiation develops heat, more than you think. Watch out when touching the infrared LEDs (or the PCB backplate behind them), they can become very hot. Also, do not cover the infrared LEDs with tape, textiles, clothes, … or put it on carpets etc. The materials with contact to the infrared LEDs can start to burn. Same goes for the backplate of the PCB, behind the infrared LEDs. It gets hot!
 
-**Confidentiality, Semiconductor Market and Supply Chain:**<br/>
+
+**Semiconductor Market and Supply Chain:**<br/>
 Currently (2021/2022/2023), semiconductor market is under tension with supply chain issues leading to a shortage in semiconductors, processors, ICs, etc. Many products are off the market until late 2022 or even 2023. Not all components might be available at all times, starting with the standard RaspberryPi (v3 or v4). Wherever possible, alternatives will be presented to overcome these organisational obstacles.
 
 If you find other alternatives for any component that are not mentioned here, do not hesitate to make contact, they will be added to the site if appropriate.
