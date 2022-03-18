@@ -21,8 +21,12 @@ def stream_night_vision_fast(cam_sel=0, cam_window_name="Night Vision (EXIT with
         ret, frame = cap.read()
 
         # update display
-        cv2.imshow(cam_window_name, frame)
-        cv2.setWindowProperty(cam_window_name, cv2.WND_PROP_TOPMOST, 1)     # always set video to foreground of each program
+        try:
+            cv2.imshow(cam_window_name, frame)
+            cv2.setWindowProperty(cam_window_name, cv2.WND_PROP_TOPMOST, 1)     # always set video to foreground of each program
+        except:
+            print("ERROR:   Showing the video stream failed")
+            pass
 
         #  exit on <ESC> key
         if cv2.waitKey(1) ==  27:
@@ -50,8 +54,12 @@ def stream_night_vision_fullscreen(cam_sel=0, cam_window_name="Night Vision (EXI
         cv2.setWindowProperty(cam_window_name, cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
         
         # update display
-        cv2.imshow(cam_window_name, frame)
-        cv2.setWindowProperty(cam_window_name, cv2.WND_PROP_TOPMOST, 1)  # always set video to foreground of each program
+        try:
+            cv2.imshow(cam_window_name, frame)
+            cv2.setWindowProperty(cam_window_name, cv2.WND_PROP_TOPMOST, 1)     # always set video to foreground of each program
+        except:
+            print("ERROR:   Showing the video stream failed")
+            pass
         
         #  exit on <ESC> key
         if cv2.waitKey(1) ==  27:
@@ -75,11 +83,18 @@ def stream_night_vision_resize(resize_format=(1, 1), cam_sel=0, cam_window_name=
         ret, frame = cap.read()
         
         # resizing format will be given by a tuple with reshape factors for   x (index 0)   and   y (index 1)
-        frame = cv2.resize(frame, None, fx=int(resize_format[0]), fy=int(resize_format[1]), interpolation=cv2.INTER_AREA)
+        try:
+            frame = cv2.resize(frame, None, fx=int(resize_format[0]), fy=int(resize_format[1]), interpolation=cv2.INTER_AREA)
+        except:
+            print("ERROR:   Resizing the video failed. Might be because of broken data coming in.")
         
         # update display
-        cv2.imshow(cam_window_name, frame)
-        cv2.setWindowProperty(cam_window_name, cv2.WND_PROP_TOPMOST,  1)  # always set video to foreground of each program
+        try:
+            cv2.imshow(cam_window_name, frame)
+            cv2.setWindowProperty(cam_window_name, cv2.WND_PROP_TOPMOST, 1)     # always set video to foreground of each program
+        except:
+            print("ERROR:   Showing the video stream failed")
+            pass
         
         #  exit on <ESC> key
         if cv2.waitKey(1) ==  27:
